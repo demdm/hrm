@@ -1,0 +1,37 @@
+version: '3.7'
+
+services:
+
+    db:
+        image: mysql
+        command: ["--default-authentication-plugin=mysql_native_password"]
+        ports:
+            - 3306:3306
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+#    nginx:
+#        build: ./docker/container/nginx
+#        ports:
+#            - 80:80
+#        links:
+#            - php
+#            - react
+#        volumes:
+#            - ./docker/logs/nginx:/var/log/nginx:cached
+#            - ./php:/var/www/php:cached
+#            - ./react:/var/www/react
+
+    node:
+        build: ./node
+        # command: sh -c 'cd /var/www/react npm install' #sh -c 'cd /var/www/react npm run-script build'
+        volumes:
+            - ./node:/var/www/node
+            - ./node/node_modules:/var/www/node/node_modules
+        ports:
+            - 8080:8080
+        environment:
+            - NODE_ENV=development

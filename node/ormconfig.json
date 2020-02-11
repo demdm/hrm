@@ -1,0 +1,24 @@
+{
+   "type": "mysql",
+   "host": "db",
+   "port": 3306,
+   "username": "dima_666",
+   "password": "dsj3uiwe7823jsdJSd",
+   "database": "js_mysql_db",
+   "synchronize": true,
+   "logging": false,
+   "entities": [
+      "src/entity/**/*.ts"
+   ],
+   "migrations": [
+      "src/migration/**/*.ts"
+   ],
+   "subscribers": [
+      "src/subscriber/**/*.ts"
+   ],
+   "cli": {
+      "entitiesDir": "src/entity",
+      "migrationsDir": "src/migration",
+      "subscribersDir": "src/subscriber"
+   }
+}

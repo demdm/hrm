@@ -1,0 +1,23 @@
+{
+    "name": "node_js",
+    "version": "1.0.0",
+    "description": "Node.js",
+    "author": "Dmitriy Demianov <d65950@gmail.com>",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "tsc": "tsc",
+        "dev": "ts-node-dev --respawn --transpileOnly ./server.ts",
+        "prod": "tsc && node ./server.js"
+    },
+    "dependencies": {
+        "@types/express": "^4.17.2",
+        "@types/node": "^13.7.1",
+        "body-parser": "^1.19.0",
+        "express": "^4.16.1",
+        "mysql2": "^2.1.0",
+        "reflect-metadata": "^0.1.13",
+        "typeorm": "^0.2.22",
+        "typescript": "^3.7.5"
+    }
+}
