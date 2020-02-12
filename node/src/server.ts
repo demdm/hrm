@@ -1,9 +1,11 @@
+import "reflect-metadata";
 import express from 'express';
 import {createConnection} from "typeorm";
 import bodyParser from "body-parser";
+import {Request, Response} from "express";
 
 // Constants
-const PORT = 8080;
+const PORT = process.env.NODE_PORT || 8080;
 const HOST = '0.0.0.0';
 
 // create connection with database
@@ -16,17 +18,14 @@ createConnection().then(async connection => {
 
     server.use(bodyParser.json());
 
-    // run app
-    server.listen(PORT);
-
-    server.get('/', (req, res) => {
+    server.get('/', (req: Request, res: Response) => {
         res.send('Hello World!');
     });
 
     server.listen(PORT, () => {
-        console.log(`Running on http://${HOST}:${PORT}`);
+        console.info(`Running on http://${HOST}:${PORT}`);
     });
 
 }).catch(
-    error => console.log("TypeORM connection error: ", error)
+    error => console.error("TypeORM connection error: ", error)
 );

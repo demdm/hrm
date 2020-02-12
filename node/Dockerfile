@@ -25,4 +25,7 @@ COPY --chown=node:node . .
 EXPOSE 8080
 
 # Запуск проекта
+## Чтобы работать через nodenom
 CMD ["npm", "start"]
+## Это для прода
+#CMD ["node", "build/server.js"]
